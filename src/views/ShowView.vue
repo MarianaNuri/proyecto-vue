@@ -38,7 +38,7 @@
     </div>
 
     <div class="card comparacion">
-      <h2>⚖ Diferencia con v-if</h2>
+      <h2>Diferencia con v-if</h2>
       <ul>
         <li>v-if elimina el elemento del DOM</li>
         <li>v-show solo lo oculta con CSS</li>
