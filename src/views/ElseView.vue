@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h1>Directiva v-if y v-else</h1>
+    <h1>Directiva v-else</h1>
 
     <section class="explicacion">
       <h2>¿Qué es v-else?</h2>
