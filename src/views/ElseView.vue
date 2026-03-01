@@ -1,50 +1,63 @@
 <template>
-  <div class="container">
+  <div class="page">
     <h1>Directiva v-else</h1>
 
-    <section class="explicacion">
-      <h2>¿Qué es v-else?</h2>
+    <div class="card">
+      <h2>¿Qué hace v-else?</h2>
       <p>
-        La directiva <strong>v-else</strong> se utiliza junto con
-        <strong>v-if</strong> para mostrar un bloque alternativo
-        cuando la condición del v-if es falsa.
+        <strong>v-else</strong> permite mostrar un bloque alternativo
+        cuando la condición de <strong>v-if</strong> es falsa.
       </p>
 
       <p>
-        Es útil cuando queremos mostrar dos posibles resultados
-        dependiendo de una condición.
+        Se utiliza cuando necesitamos manejar dos posibles estados
+        opuestos en una interfaz.
       </p>
-    </section>
+    </div>
 
-    <section class="estructura">
-      <h2>Estructura básica:</h2>
+    <div class="card">
+      <h2>Estructura básica</h2>
       <pre>
-&lt;p v-if="condicion"&gt;Contenido verdadero&lt;/p&gt;
-&lt;p v-else&gt;Contenido alternativo&lt;/p&gt;
-      </pre>
-    </section>
+&lt;elemento v-if="condicion"&gt;
+  Contenido si es verdadero
+&lt;/elemento&gt;
 
-    <section class="ejemplo">
-      <h2>Ejemplo interactivo:</h2>
+&lt;elemento v-else&gt;
+  Contenido alternativo
+&lt;/elemento&gt;
+      </pre>
+    </div>
+
+    <div class="card ejemplo">
+      <h2> Ejemplo interactivo</h2>
 
       <button @click="toggleEstado">
-        Cambiar estado del usuario
+        Cambiar estado
       </button>
 
-      <p v-if="activo" class="activo">
-         El usuario está ACTIVO
-      </p>
+      <div class="estado">
+        <p v-if="activo" class="activo">
+          Usuario ACTIVO
+        </p>
 
-      <p v-else class="inactivo">
-         El usuario está INACTIVO
+        <p v-else class="inactivo">
+          Usuario INACTIVO
+        </p>
+      </div>
+    </div>
+
+    <div class="card info">
+      <h2>¿Qué ocurre internamente?</h2>
+      <p>
+        Cuando la condición cambia, Vue elimina completamente
+        el elemento del DOM y renderiza el otro bloque.
       </p>
-    </section>
+    </div>
   </div>
 </template>
 
 <script setup>
 import { ref } from 'vue'
-
 const activo = ref(true)
 
 function toggleEstado() {
@@ -53,41 +66,61 @@ function toggleEstado() {
 </script>
 
 <style scoped>
-.container {
-  max-width: 700px;
+.page {
+  max-width: 800px;
   margin: auto;
-  padding: 30px;
-  font-family: Arial, sans-serif;
+  padding: 40px;
+  font-family: 'Segoe UI', sans-serif;
 }
 
 h1 {
   text-align: center;
+  margin-bottom: 30px;
 }
 
-section {
-  margin-top: 30px;
+.card {
+  background: white;
+  padding: 25px;
+  margin-bottom: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
 }
 
 pre {
-  background: #f4f4f4;
+  background: #f4f6f8;
   padding: 15px;
   border-radius: 8px;
-  overflow-x: auto;
 }
 
 button {
-  padding: 10px 15px;
-  margin: 15px 0;
+  padding: 10px 18px;
+  border: none;
+  background: #42b883;
+  color: white;
+  border-radius: 8px;
   cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #369870;
+}
+
+.estado {
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 .activo {
-  color: green;
-  font-weight: bold;
+  color: #2e7d32;
 }
 
 .inactivo {
-  color: red;
-  font-weight: bold;
+  color: #c62828;
+}
+
+.info {
+  background: #f0f7ff;
 }
 </style>

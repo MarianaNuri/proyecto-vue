@@ -1,86 +1,110 @@
 <template>
-  <div class="container">
+  <div class="page">
     <h1>Directiva v-show</h1>
 
-    <section class="explicacion">
-      <h2>¿Qué es v-show?</h2>
+    <div class="card">
+      <h2> ¿Qué hace v-show?</h2>
       <p>
-        La directiva <strong>v-show</strong> se utiliza para
-        mostrar u ocultar un elemento en el DOM.
+        <strong>v-show</strong> controla la visibilidad de un elemento,
+        pero sin eliminarlo del DOM.
       </p>
 
       <p>
-        A diferencia de v-if, el elemento siempre permanece en el DOM,
-        pero se oculta usando CSS (display: none).
+        Solo cambia su propiedad CSS <code>display</code>.
       </p>
-    </section>
+    </div>
 
-    <section class="estructura">
-      <h2>Estructura básica:</h2>
+    <div class="card">
+      <h2>Estructura básica</h2>
       <pre>
-&lt;p v-show="condicion"&gt;Contenido visible u oculto&lt;/p&gt;
+&lt;elemento v-show="condicion"&gt;
+  Contenido visible u oculto
+&lt;/elemento&gt;
       </pre>
-    </section>
+    </div>
 
-    <section class="ejemplo">
-      <h2>Ejemplo interactivo:</h2>
+    <div class="card ejemplo">
+      <h2>Ejemplo interactivo</h2>
 
       <button @click="mostrar = !mostrar">
         Mostrar / Ocultar mensaje
       </button>
 
-      <p v-show="mostrar" class="mensaje">
-         Este mensaje se controla con v-show
-      </p>
-    </section>
+      <div class="mensaje-box">
+        <p v-show="mostrar" class="mensaje">
+          Este mensaje usa v-show
+        </p>
+      </div>
+    </div>
 
-    <section class="comparacion">
-      <h2>Diferencia con v-if</h2>
-      <p>
-        v-if elimina el elemento del DOM cuando la condición es falsa.
-        v-show solo lo oculta visualmente.
-      </p>
-    </section>
+    <div class="card comparacion">
+      <h2>⚖ Diferencia con v-if</h2>
+      <ul>
+        <li>v-if elimina el elemento del DOM</li>
+        <li>v-show solo lo oculta con CSS</li>
+        <li>v-show es mejor para cambios frecuentes</li>
+      </ul>
+    </div>
   </div>
 </template>
 
 <script setup>
 import { ref } from 'vue'
-
 const mostrar = ref(true)
 </script>
 
 <style scoped>
-.container {
-  max-width: 700px;
+.page {
+  max-width: 800px;
   margin: auto;
-  padding: 30px;
-  font-family: Arial, sans-serif;
+  padding: 40px;
+  font-family: 'Segoe UI', sans-serif;
 }
 
 h1 {
   text-align: center;
+  margin-bottom: 30px;
 }
 
-section {
-  margin-top: 30px;
+.card {
+  background: white;
+  padding: 25px;
+  margin-bottom: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
 }
 
 pre {
-  background: #f4f4f4;
+  background: #f4f6f8;
   padding: 15px;
   border-radius: 8px;
-  overflow-x: auto;
 }
 
 button {
-  padding: 10px 15px;
-  margin: 15px 0;
+  padding: 10px 18px;
+  border: none;
+  background: #35495e;
+  color: white;
+  border-radius: 8px;
   cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #2c3e50;
+}
+
+.mensaje-box {
+  margin-top: 20px;
+  min-height: 30px;
 }
 
 .mensaje {
-  color: blue;
   font-weight: bold;
+  color: #1976d2;
+}
+
+.comparacion {
+  background: #f9f9ff;
 }
 </style>
