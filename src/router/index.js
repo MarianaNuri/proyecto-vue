@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 
 import HomeView from '../views/HomeView.vue'
 import IfView from '../views/IfView.vue'
@@ -9,7 +9,7 @@ import ForView from '../views/ForView.vue'
 import KeyView from '../views/KeyView.vue'
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHashHistory(),
   routes: [
     { path: '/', component: HomeView },
     { path: '/if', component: IfView },
