@@ -23,6 +23,7 @@ nav {
   padding: 15px;
   background: #f4f6f8;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', sans-serif;
 }
 
 nav a{
