@@ -46,7 +46,8 @@ const mostrar = ref(false)
 
 <style scoped>
 .page {
-  max-width: 800px;
+  width: 90%;
+  max-width: 1000px;
   margin: auto;
   padding: 40px;
   font-family: 'Segoe UI', sans-serif;

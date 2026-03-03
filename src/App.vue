@@ -17,6 +17,8 @@
 <style scoped>
 nav {
   display: flex;
+  flex-wrap: wrap;       
+  justify-content: center;
   gap: 15px;
   padding: 15px;
   background: #f4f6f8;
@@ -29,6 +31,7 @@ nav a{
   font-weight: bold;
   font-size: 16px;
   transition: 0.3s;
+  text-align: center;
 }
 
 nav a:hover {
