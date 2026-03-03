@@ -1,39 +1,43 @@
 <template>
   <div class="page">
-    <h1>Directiva v-bind:key</h1>
+    <h1>Directiva v-for con v-bind:key</h1>
 
     <div class="card">
       <h2>¿Qué es v-bind:key?</h2>
       <p>
-        <strong>v-bind:key</strong> permite identificar de forma única
-        cada elemento generado con <strong>v-for</strong>.
+        <strong>v-bind:key</strong> es una propiedad que ayuda a Vue
+        a identificar de manera única cada elemento generado con v-for.
       </p>
       <p>
-        Ayuda a Vue a optimizar el renderizado cuando la lista cambia.
+        Permite que Vue optimice la actualización del DOM cuando la lista cambia.
       </p>
     </div>
 
     <div class="card">
       <h2>Funcionamiento</h2>
       <ul>
-        <li>Se usa junto con v-for.</li>
-        <li>Debe tener un valor único (como un id).</li>
+        <li>Recorre cada elemento del arreglo.</li>
+        <li>Asigna una clave única a cada elemento.</li>
+        <li>Mejora el rendimiento y evita errores visuales.</li>
       </ul>
 
       <h2>Estructura básica:</h2>
       <pre>
-&lt;li v-for="usuario in usuarios" :key="usuario.id"&gt;
-  {{ usuario.nombre }}
+&lt;li v-for="(item, index) in lista" :key="index"&gt;
+  {{ item }}
 &lt;/li&gt;
       </pre>
     </div>
 
     <div class="card ejemplo">
-      <h2>Ejemplo</h2>
+      <h2>Ejemplo interactivo</h2>
 
       <ul>
-        <li v-for="usuario in usuarios" :key="usuario.id">
-          {{ usuario.nombre }}
+        <li 
+          v-for="(producto, index) in productos" 
+          :key="index"
+        >
+          {{ producto }}
         </li>
       </ul>
     </div>
@@ -41,8 +45,10 @@
     <div class="card info">
       <h2>¿Qué ocurre internamente?</h2>
       <p>
-        Vue usa el valor de <strong>key</strong> para saber qué elemento cambió,
-        fue agregado o eliminado, haciendo las actualizaciones más eficientes.
+        Vue usa la propiedad <strong>key</strong> para diferenciar
+        cada nodo virtual. Cuando el arreglo cambia, Vue solo
+        actualiza los elementos necesarios en lugar de volver
+        a renderizar toda la lista.
       </p>
     </div>
   </div>
@@ -51,11 +57,7 @@
 <script setup>
 import { ref } from 'vue'
 
-const usuarios = ref([
-  { id: 1, nombre: 'Mariana' },
-  { id: 2, nombre: 'Eva' },
-  { id: 3, nombre: 'Yazmin' }
-])
+const productos = ref(['Laptop', 'Mouse', 'Teclado', 'Monitor'])
 </script>
 
 <style scoped>
@@ -65,10 +67,12 @@ const usuarios = ref([
   padding: 40px;
   font-family: 'Segoe UI', sans-serif;
 }
+
 h1 {
   text-align: center;
   margin-bottom: 30px;
 }
+
 .card {
   background: white;
   padding: 25px;
@@ -76,11 +80,13 @@ h1 {
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
 }
-pre{
+
+pre {
   background: #f4f6f8;
   padding: 15px;
   border-radius: 8px;
 }
+
 .info {
   background: #f0f7ff;
 }
