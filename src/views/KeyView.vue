@@ -1,11 +1,11 @@
 <template>
   <div class="page">
-    <h1>Directiva v-for con v-blind:key</h1>
+    <h1>Directiva v-for con v-bind:key</h1>
 
     <div class="card">
-      <h2>¿Qué es v-blind:key?</h2>
+      <h2>¿Qué es v-bind:key?</h2>
       <p>
-        <strong>v-blind:key</strong> es una propiedad que ayuda a Vue
+        <strong>v-bind:key</strong> es una propiedad que ayuda a Vue
         a identificar de manera única cada elemento generado con v-for.
       </p>
       <p>
