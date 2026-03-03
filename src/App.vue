@@ -7,7 +7,7 @@
       <router-link to="/else">v-else</router-link> 
       <router-link to="/show">v-show</router-link> 
       <router-link to="/for">v-for</router-link> 
-      <router-link to="/key">v-bind:key</router-link>
+      <router-link to="/key">v-blind:key</router-link>
     </nav>
 
     <router-view />

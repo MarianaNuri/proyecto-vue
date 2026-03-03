@@ -1,11 +1,11 @@
 <template>
   <div class="page">
-    <h1>Directiva v-for con v-bind:key</h1>
+    <h1>Directiva v-for con v-blind:key</h1>
 
     <div class="card">
-      <h2>¿Qué es v-bind:key?</h2>
+      <h2>¿Qué es v-blind:key?</h2>
       <p>
-        <strong>v-bind:key</strong> es una propiedad que ayuda a Vue
+        <strong>v-blind:key</strong> es una propiedad que ayuda a Vue
         a identificar de manera única cada elemento generado con v-for.
       </p>
       <p>
@@ -32,14 +32,29 @@
     <div class="card ejemplo">
       <h2>Ejemplo interactivo</h2>
 
+      <input 
+        v-model="nuevoProducto" 
+        placeholder="Escribe un producto"
+      />
+      <button @click="agregarProducto">
+        Agregar
+      </button>
+
       <ul>
         <li 
-          v-for="(producto, index) in productos" 
-          :key="index"
+          v-for="producto in productos" 
+          :key="producto.id"
         >
-          {{ producto }}
+          {{ producto.nombre }}
+          <button @click="eliminarProducto(producto.id)">
+            Quitar
+          </button>
         </li>
       </ul>
+
+      <p v-if="productos.length === 0">
+        No hay productos en la lista.
+      </p>
     </div>
 
     <div class="card info">
@@ -56,8 +71,29 @@
 
 <script setup>
 import { ref } from 'vue'
+const nuevoProducto = ref('')
+const contadorId = ref(3)
 
-const productos = ref(['Laptop', 'Mouse', 'Teclado', 'Monitor'])
+const productos = ref([
+  { id: 1, nombre: 'Laptop' },
+  { id: 2, nombre: 'Mouse' }
+])
+
+const agregarProducto = () => {
+  if (nuevoProducto.value.trim() !== '') {
+    productos.value.push({
+      id: contadorId.value++,
+      nombre: nuevoProducto.value
+    })
+    nuevoProducto.value = ''
+  }
+}
+
+const eliminarProducto = (id) => {
+  productos.value = productos.value.filter(
+    producto => producto.id !== id
+  )
+}
 </script>
 
 <style scoped>
